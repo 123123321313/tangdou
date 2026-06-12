@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.tangdou.app",
+        "sha256_cert_fingerprints": ["00:7C:13:A9:4C:C0:AC:1C:E1:F6:08:EF:9F:C0:DE:C0:BE:6C:0A:39:AB:A3:55:01:85:DF:4B:B6:36:C0:5C:08"]
+      }
+    }]
