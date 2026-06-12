@@ -1,0 +1,20 @@
+﻿{
+  "name": "xiaocouple-backend",
+  "version": "1.0.0",
+  "description": "小情侣双人联机游戏服务",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nanoid": "^5.0.7",
+    "socket.io": "^4.7.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

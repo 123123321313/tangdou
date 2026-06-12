@@ -1,0 +1,11 @@
+﻿services:
+  - type: web
+    name: tangdou
+    runtime: node
+    plan: free
+    buildCommand: cd frontend && npm install --no-save sucrase && node build.mjs
+    startCommand: cd backend && npm install --omit=dev && node src/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /api/health

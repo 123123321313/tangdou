@@ -1,0 +1,26 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  background: linear-gradient(135deg, #fff1f5 0%, #ecfdf5 100%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 rounded-2xl bg-candy-500 text-white font-bold shadow-lg shadow-candy-300/40 active:scale-95 transition;
+  }
+  .btn-secondary {
+    @apply px-6 py-3 rounded-2xl bg-white text-candy-600 font-bold border-2 border-candy-200 active:scale-95 transition;
+  }
+  .card {
+    @apply bg-white/80 backdrop-blur rounded-3xl shadow-xl p-5;
+  }
+  .input {
+    @apply w-full px-4 py-3 rounded-2xl border-2 border-candy-100 focus:border-candy-400 focus:outline-none bg-white;
+  }
+}

@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+<meta name="theme-color" content="#ff4787" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="糖豆" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="description" content="糖豆 - 情侣双人小游戏合集（真心话大冒险、飞行棋、骰子、画画猜词、塔罗、情歌对唱、默契测试）" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="apple-touch-icon" href="./icon-192.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
+<link rel="stylesheet" href="./assets/tailwind.css" />
+<link rel="stylesheet" href="./assets/main.css" />
+<title>糖豆 · 情侣双人小游戏</title>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "react-router": "https://esm.sh/react-router@6.26.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.26.0?deps=react@18.3.1,react-dom@18.3.1",
+    "scheduler": "https://esm.sh/scheduler@0.23.2",
+    "socket.io-client": "https://esm.sh/socket.io-client@4.7.5"
+  }
+}
+</script>
+<style>
+html,body{margin:0;padding:0;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;-webkit-tap-highlight-color:transparent;color:#2d3748}
+body{background:linear-gradient(135deg,#fff1f5 0%,#ecfdf5 100%);background-attachment:fixed;min-height:100vh;min-height:100dvh;overscroll-behavior-y:contain}
+#splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,#fff1f5 0%,#ecfdf5 100%);z-index:9999;transition:opacity .3s}
+#splash.hide{opacity:0;pointer-events:none}
+#splash .logo{font-size:96px;animation:heartbeat 1.4s ease-in-out infinite;filter:drop-shadow(0 6px 16px rgba(255,71,135,.35))}
+#splash .title{font-size:32px;font-weight:800;color:#ff4787;letter-spacing:3px}
+#splash .sub{color:#ff9bbb;font-size:13px;margin-top:4px}
+#splash .dots{display:flex;gap:6px;margin-top:10px}
+#splash .dots span{width:8px;height:8px;border-radius:50%;background:#ff9bbb;animation:dot 1.4s ease-in-out infinite}
+#splash .dots span:nth-child(2){animation-delay:.2s}
+#splash .dots span:nth-child(3){animation-delay:.4s}
+#splash .err{color:#c41e64;font-size:12px;max-width:320px;text-align:center;white-space:pre-wrap;display:none;padding:8px 14px;background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(255,71,135,.18);margin-top:10px}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes dot{0%,100%{transform:scale(.6);opacity:.5}50%{transform:scale(1.2);opacity:1}}
+@media (prefers-color-scheme: dark){body{background:linear-gradient(135deg,#1f1419 0%,#0d1f1a 100%);color:#e2e8f0}}
+</style>
+</head>
+<body>
+<div id="splash">
+  <div class="logo">🍬</div>
+  <div class="title">糖豆</div>
+  <div class="sub">情侣双人小游戏</div>
+  <div class="dots"><span></span><span></span><span></span></div>
+  <div class="err" id="boot-err"></div>
+</div>
+<div id="root"></div>
+<script>
+window.onerror=function(m,s,l,c,e){var p=document.getElementById("boot-err");if(p){p.style.display="block";p.textContent="[error] "+(m||"")+" @ "+(s||"")+":"+(l||"")+(e&&e.stack?"\n"+e.stack:"")}};
+window.addEventListener("unhandledrejection",function(ev){var p=document.getElementById("boot-err");if(p){p.style.display="block";p.textContent+="\n[promise] "+(ev.reason&&ev.reason.message||ev.reason)}});
+function hideSplash(){var s=document.getElementById("splash");if(s){s.classList.add("hide");setTimeout(function(){s.remove()},400)}}
+window.addEventListener("app-ready",hideSplash);
+// Hide splash when root has content (fallback)
+var observer=new MutationObserver(function(){var r=document.getElementById("root");if(r&&r.children.length>0){hideSplash();observer.disconnect()}});
+observer.observe(document.getElementById("root"),{childList:true});
+setTimeout(hideSplash,5000);
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() { navigator.serviceWorker.register("./sw.js").catch(function(){}); });
+}
+</script>
+<script type="module" src="./assets/main.js"></script>
+</body>
+</html>
