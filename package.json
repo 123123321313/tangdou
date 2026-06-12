@@ -1,6 +1,1 @@
-﻿{
-  "name": "xiaocouple",
-  "private": true,
-  "version": "1.0.0",
-  "scripts": { "build": "cd frontend && node build.mjs" }
-}
+{"name":"tangdou","private":true,"version":"1.0.0","scripts":{"build":"echo dist-prebuilt"}}

@@ -1,4 +1,4 @@
-﻿[build]
+[build]
   publish = "frontend/dist"
   command = "cd frontend && node build.mjs"
 
